@@ -11,21 +11,20 @@
   nixpkgs.config.allowUnfree = true;
 
   imports = [
-    ./modules/terminal
-    ./modules/neovim
+    ./modules
   ];
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
-    obsidian
+		obsidian
     zsh-powerlevel10k
+		catppuccin-cursors
     alacritty
     meslo-lgs-nf
     eww
   ];
 
-
-  fonts.fontconfig.enable = true;
+	fonts.fontconfig.enable = true;
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
