@@ -7,7 +7,6 @@
   home.homeDirectory = "/home/andrey";
  
   home.stateVersion = "25.05"; # Please read the comment before changing.
-
   nixpkgs.config.allowUnfree = true;
 
   imports = [
@@ -17,6 +16,9 @@
   # environment.
   home.packages = with pkgs; [
 		obsidian
+		swaynotificationcenter
+		fasm
+		gdb
     zsh-powerlevel10k
 		catppuccin-cursors
     alacritty

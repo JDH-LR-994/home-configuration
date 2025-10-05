@@ -4,11 +4,10 @@
 	catppuccin = {
 		enable = true;
 		flavor = "mocha";
-		accent = "dark";
+		accent = "blue";
 		cursors = {
 			enable = true;
 			accent = "dark";
 		};
-		waybar.enable = true;
 	};
 }

@@ -16,6 +16,7 @@
 			enable = true;
 			settings = {
 				flavour = "mocha";
+				accent = "blue";
 			};
 		};
 

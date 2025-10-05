@@ -4,7 +4,7 @@
 	imports = [
 		./catppuccin
 		./hyprland
-		./neovim
+		./editors
 		./packages
 		./terminal 
 	];
