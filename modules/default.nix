@@ -1,11 +1,12 @@
-{ pkgs, ... }:
-
-{
-	imports = [
-		./catppuccin
-		./hyprland
-		./editors
-		./packages
-		./terminal 
-	];
+{...}: {
+  imports = [
+    ./catppuccin
+    ./fastfetch
+    ./waybar
+    ./editors
+    ./packages
+    ./terminal
+    ./sway
+    ./rofi
+  ];
 }
