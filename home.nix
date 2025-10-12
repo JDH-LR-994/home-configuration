@@ -14,7 +14,17 @@
   # environment.
   home.packages = with pkgs; [
     pavucontrol
-    obsidian
+    vscode-css-languageserver
+    prettier
+    networkmanagerapplet
+    swww
+    grim
+    slurp
+    wl-clipboard
+    unar
+    swaybg
+    waypaper
+    hyprpaper
     nil
     nixd
     gopls

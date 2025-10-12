@@ -33,6 +33,15 @@
         auto-format = true;
         language-servers = ["jdtls"];
       }
+      {
+        name = "css";
+        auto-format = true;
+        language-servers = ["vscode-css-languageserver"];
+        formatter = {
+          command = "${pkgs.prettier}/bin/prettier";
+          args = ["--parser" "css"];
+        };
+      }
     ];
   };
 }

@@ -5,25 +5,65 @@
       mainBar = {
         layer = "top";
         position = "top";
-        height = 30;
-        spacing = 2;
-        modules-left = ["sway/workspaces"];
-        modules-center = ["temperature" "cpu"];
-        modules-right = ["pulseaudio" "memory" "battery" "sway/language" "clock" "tray"];
+        modules-left = ["hyprland/workspaces"];
+        modules-center = ["hyprland/window"];
+        modules-right = [
+          "pulseaudio"
+          "backlight"
+          "network"
+          "battery"
+          "temperature"
+          "clock"
+          "tray"
+          "custom/lock"
+          "custom/power"
+        ];
 
-        "sway/workspaces" = {
-          persistent-workspaces = {
-            "*" = 9;
-          };
+        network = {
+          format-icons = [
+            "󰤯"
+            "󰤟"
+            "󰤢"
+            "󰤥"
+            "󰤨"
+          ];
+          format-ethernet = " {bandwidthDownOctets}";
+          format-wifi = "{icon} {signalStrength}%";
+          format-disconnected = "󰤮";
+          tooltip = false;
+          on-click = "nm-applet";
+        };
+
+        "hyprland/workspaces" = {
           diseable-scroll = true;
-          all-outputs = true;
+          sort-by-name = true;
+          format = "  {icon}  ";
+          format-icons = {
+            default = "";
+          };
+        };
+        "hyprland/window" = {
+          max-lenght = 22;
+          separate-outputs = true;
+          rewrite = {
+            "" = " 🙈 No Windows? ";
+          };
+        };
+        tray = {
+          icon-size = 14;
+          spacing = 10;
+        };
+        backlight = {
+          device = "intel_backlight";
+          format = "{icon} {percent}%";
+          format-icons = ["" "" "" "" "" "" "" "" ""];
         };
 
         temperature = {
           critical-threshold = 70;
           thermal-zone = 5;
-          format = "{temperatureC}°C ❄";
-          format-critical = "{temperatureC}°C 󰈸";
+          format = "❄ {temperatureC}°C";
+          format-critical = "󰈸 {temperatureC}°C";
           interval = 5;
         };
 
@@ -39,52 +79,39 @@
             car = "";
             default = ["" "" ""];
           };
+          tooltip = false;
           on-click = "pavucontrol";
         };
 
-        "sway/language" = {
-          format = "{short}";
-        };
-
         battery = {
+          states = {
+            warning = 30;
+            critical = 15;
+          };
           format = "{icon} {capacity}%";
-          format-icons = ["󰂎" "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹"];
-          format-charging = "󰂄 {capacity}%";
-          format-plugged = "󱘖 {capacity}%";
-          format-full = "󰁹 {capacity}%";
-        };
-
-        cpu = {
-          format = "󰻠 {usage}%";
-          tooltip = false;
-        };
-
-        memory = {
-          format = "󰍛 {}%";
+          format-charging = "  {capacity}%";
+          format-plugged = "  {capacity}%";
+          format-icons = ["" "" "" "" ""];
         };
 
         clock = {
-          format = " {:%H:%M}";
-          format-alt = " {:%d.%m.%Y}";
+          tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
+          format-alt = " {:%d/%m/%Y}";
+          format = " {:%H:%M}";
         };
 
-        tray = {
-          icon-size = 16;
-          spacing = 8;
+        "custom/lock" = {
+          tooltip = false;
+          on-click = "hyprlock";
+          format = "";
+        };
+        "custom/power" = {
+          tooltip = false;
+          on-click = "wlogout &";
+          format = "襤";
         };
       };
     };
-    style = ''
-              * {
-        /* reference the color by using @color-name */
-        color: @text;
-      }
-
-      window#waybar {
-        /* you can also GTK3 CSS functions! */
-        background-color: shade(@base, 0.9);
-        border: 2px solid alpha(@crust, 0.3);
-      }
-    '';
+    style = builtins.readFile ./style.css;
   };
 }

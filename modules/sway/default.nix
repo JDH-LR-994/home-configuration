@@ -16,5 +16,6 @@
         xkb_options = "grp:alt_shift_toggle";
       };
     };
+    systemd.enable = true;
   };
 }
