@@ -1,5 +1,5 @@
 {...}: {
   imports = [
-    ./helix
+    ./nix-flatpak.nix
   ];
 }

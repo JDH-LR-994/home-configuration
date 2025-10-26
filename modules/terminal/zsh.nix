@@ -1,7 +1,5 @@
-{ pkgs, ... }:
-
-{
-  imports = [ ./aliases.nix ];
+{pkgs, ...}: {
+  imports = [./aliases.nix];
 
   programs.zsh = {
     enable = true;
@@ -10,7 +8,16 @@
     syntaxHighlighting.enable = true;
     oh-my-zsh = {
       enable = true;
-      theme  = "powerlevel10k/powerlevel10k";
+      plugins = ["fzf" "git" "sudo"];
+      theme = "powerlevel10k/powerlevel10k";
+    };
+
+    historySubstringSearch.enable = true;
+
+    history = {
+      ignoreDups = true;
+      save = 10000;
+      size = 10000;
     };
 
     plugins = [
@@ -22,6 +29,8 @@
     ];
 
     initContent = ''
+      source ${pkgs.fzf}/share/fzf/key-bindings.zsh
+
       if [[ -f ~/.p10k.zsh ]]; then
         source ~/.p10k.zsh
       else
@@ -29,6 +38,6 @@
       fi
       clear
       fastfetch
-   '';
+    '';
   };
 }

@@ -11,5 +11,6 @@
     ./terminal
     ./sway
     ./rofi
+    ./specialization
   ];
 }

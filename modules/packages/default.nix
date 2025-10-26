@@ -1,7 +1,9 @@
-{ pkgs, ... }:
-
-{
-	imports = [
-		./utils.nix
-	];
+{...}: {
+  imports = [
+    ./utils.nix
+    ./fonts.nix
+    ./wayland.nix
+    ./gui.nix
+    ./dev
+  ];
 }
